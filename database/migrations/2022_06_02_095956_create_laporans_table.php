@@ -15,12 +15,11 @@ class CreateLaporansTable extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->increments('id_laporan');
-            // $table->foreignId('user_id');
-            $table->string('title');
+            $table->string('name');
+            $table->string('phone');
             $table->string('image');
-            $table->text('description');
             $table->text('location');
-            $table->string('action')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

@@ -27,9 +27,9 @@ class LaporanController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required', 
-            'image' => 'required',
-            'description' => 'required', 
+            'name' => 'required', 
+            'phone' => 'required',
+            'image' => 'required', 
             'location' => 'required',
         ]);
 
@@ -37,10 +37,11 @@ class LaporanController extends Controller
         $request->file('image')->move('upload', $image);
 
         $data = [
-            'title' => $request->input('title'), 
+            'name' => $request->input('name'), 
+            'phone' => $request->input('phone'), 
             'image' => url('upload/'.$image),
-            'description' => $request->input('description'), 
             'location' => $request->input('location'),
+            'status' => '',
         ];
 
         $laporan = Laporan::create($data);
@@ -106,7 +107,7 @@ class LaporanController extends Controller
     public function update(Request $request, $id)
     {
         Laporan::where('id_laporan', $id)->update($request->all());
-        return response()->json('data berhasil diupdate (tes)');
+        return response()->json('data berhasil diupdate');
     }
 
     /**
@@ -118,6 +119,6 @@ class LaporanController extends Controller
     public function destroy($id)
     {
         Laporan::where('id_laporan', $id)->delete();
-        return response()->json('data berhasil dihapus (tes)');
+        return response()->json('data berhasil dihapus');
     }
 }

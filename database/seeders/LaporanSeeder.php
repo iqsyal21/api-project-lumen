@@ -14,14 +14,6 @@ class LaporanSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i <= 5; $i++) { 
-            $data = [
-                'title' => 'tes judul '. $i,
-                'description' => 'tes deskripsi '. $i,
-                'location' => 'tes lokasi '. $i,
-            ];
-    
-            Laporan::create($data);
-        }
+        //
     }
 }
