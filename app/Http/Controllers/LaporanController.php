@@ -19,6 +19,13 @@ class LaporanController extends Controller
         return response()->json($data);
     }
 
+    public function indexUser($id)
+    {
+        $data = Laporan::where('id_user', $id)->get();
+
+        return response()->json($data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +34,8 @@ class LaporanController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required', 
+            'id_user' => 'required',
+            'name' => 'required',
             'phone' => 'required',
             'image' => 'required', 
             'location' => 'required',
@@ -37,6 +45,7 @@ class LaporanController extends Controller
         $request->file('image')->move('upload', $image);
 
         $data = [
+            'id_user' => $request->input('id_user'),
             'name' => $request->input('name'), 
             'phone' => $request->input('phone'), 
             'image' => url('upload/'.$image),
@@ -83,6 +92,7 @@ class LaporanController extends Controller
     public function show($id)
     {
         $data = Laporan::where('id_laporan', $id)->get();
+
         return response()->json($data);
     }
 

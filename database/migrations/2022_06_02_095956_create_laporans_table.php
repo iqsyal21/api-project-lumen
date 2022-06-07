@@ -15,8 +15,9 @@ class CreateLaporansTable extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->increments('id_laporan');
+            $table->integer('id_user');
             $table->string('name');
-            $table->string('phone');
+            $table->bigInteger('phone');
             $table->string('image');
             $table->text('location');
             $table->string('status')->nullable();

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Laporan extends Model
 {
-    protected $fillable = ['name', 'phone', 'image', 'location', 'status'];
+    protected $fillable = ['id_user', 'name', 'phone', 'image', 'location', 'status'];
 }
